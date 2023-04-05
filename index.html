@@ -142,7 +142,7 @@
 			 
 			//2.配饰请求方法，设置请求接口地址
 			//这里我以木小果接口来测试，如果接口无法使用，各位小伙伴可以自行到木小果中获取接口
-			xhr.open('get','http://localhost:11452/verification/query/'+key)
+			xhr.open('get','http://114.132.121.130:11452/verification/query/'+key)
 			 
 			//3.发送请求
 			xhr.send()
@@ -150,15 +150,16 @@
 			//4.网络请求返回的数据
 			// xhr.readystate===4代表响应完成了，xhr.status === 200 代表请求成功
 			xhr.onreadystatechange = function () {
-				if (xhr.readyState===4 && xhr.status === 200) {
-				  var res = xhr.responseText
+				if (xhr.readyState===4) {
+					if(xhr.status === 200) {
+						var res = xhr.responseText
 				  if(res == 0) {
 					alert('余额不足！'); 
 				  } else if(res < 0) {
 					alert('请输入正确的秘钥');
 				  } else {
 					const xhr2 = new XMLHttpRequest()
-					xhr2.open('get','http://localhost:11452/verification/set/'+key)
+					xhr2.open('get','http://114.132.121.130:11452/verification/set/'+key)
 					xhr2.send()
 					xhr2.onreadystatechange = function () {
 						if (xhr2.readyState===4 && xhr.status === 200) {
@@ -176,6 +177,10 @@
 						}
 					  }
 					}
+					} else {
+						alert('服务器异常，请联系管理员'); 
+					}
+				  
 					
 					
 				}
