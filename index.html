@@ -143,7 +143,7 @@
 			 
 			//2.配饰请求方法，设置请求接口地址
 			//这里我以木小果接口来测试，如果接口无法使用，各位小伙伴可以自行到木小果中获取接口
-			xhr.open('get','https://114.115.166.77/verification/query/'+key)
+			xhr.open('get','https://114.115.166.77/wt/verification/query/'+key)
 			 
 			//3.发送请求
 			xhr.send()
@@ -160,7 +160,7 @@
 					alert('请输入正确的秘钥');
 				  } else {
 					const xhr2 = new XMLHttpRequest()
-					xhr2.open('get','https://114.115.166.77/verification/set/'+key)
+					xhr2.open('get','https://114.115.166.77/wt/verification/set/'+key)
 					xhr2.send()
 					xhr2.onreadystatechange = async function () {
 						if (xhr2.readyState===4 && xhr.status === 200) {
